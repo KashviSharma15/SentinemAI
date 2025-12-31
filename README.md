@@ -1,4 +1,4 @@
-# 🛡️ SentinelAI: Agentic Deepfake Defense for Smart Home IoT Security
+#  SentinelAI: Agentic Deepfake Defense for Smart Home IoT Security
 
 <div align="center">
 
@@ -14,24 +14,24 @@
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Smart home IoT devices are vulnerable to **deepfake voice/video attacks** where attackers impersonate legitimate users to gain unauthorized access. Traditional security systems simply block suspicious requests, but this approach:
-- ❌ Provides no intelligence on attacker methods
-- ❌ Alerts attackers that they've been detected
-- ❌ Fails to adapt to evolving attack patterns
+-  Provides no intelligence on attacker methods
+-  Alerts attackers that they've been detected
+-  Fails to adapt to evolving attack patterns
 
-## 💡 Solution
+##  Solution
 
 **SentinelAI** introduces a **multi-agent AI system** with **deception-based defense**:
-- ✅ Autonomous detection, decision-making, and defense
-- ✅ Honeypot mechanism that deceives attackers
-- ✅ Gathers attack intelligence while protecting real devices
-- ✅ Explainable AI with real-time decision logging
+-  Autonomous detection, decision-making, and defense
+-  Honeypot mechanism that deceives attackers
+-  Gathers attack intelligence while protecting real devices
+-  Explainable AI with real-time decision logging
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```
 ┌─────────────┐
@@ -41,21 +41,21 @@ Smart home IoT devices are vulnerable to **deepfake voice/video attacks** where 
        │ Audio/Video Command
        ▼
 ┌─────────────────────────────────────────┐
-│          🔍 DETECTION AGENT             │
+│           DETECTION AGENT               │
 │  • Analyzes biometric patterns          │
 │  • Generates confidence score (0-100%)  │
 └──────┬──────────────────────────────────┘
        │ Confidence Score
        ▼
 ┌─────────────────────────────────────────┐
-│          🧠 DECISION AGENT              │
+│           DECISION AGENT                │
 │  • Classifies: Authentic/Suspicious/Fake│
 │  • Determines threat level              │
 └──────┬──────────────────────────────────┘
        │ Action Strategy
        ▼
 ┌─────────────────────────────────────────┐
-│          🛡️ DEFENSE AGENT               │
+│           DEFENSE AGENT                 │
 │  • Allow / Restrict / Deceive           │
 │  • Activates honeypot if fake detected  │
 └──────┬──────────────────────────────────┘
@@ -66,9 +66,9 @@ Smart home IoT devices are vulnerable to **deepfake voice/video attacks** where 
 
 ---
 
-## 🚀 Core Features
+##  Core Features
 
-### 1️⃣ **Multi-Agent Intelligence**
+### 1️ **Multi-Agent Intelligence**
 
 | Agent | Role | Output |
 |-------|------|--------|
@@ -76,15 +76,15 @@ Smart home IoT devices are vulnerable to **deepfake voice/video attacks** where 
 | **Decision** | Evaluates threat level | Classification + response strategy |
 | **Defense** | Executes autonomous action | Allow / Restrict / Deceive |
 
-### 2️⃣ **Three-Tier Classification**
+### 2️ **Three-Tier Classification**
 
 | Classification | Confidence | Threat Level | Action |
 |---------------|-----------|--------------|--------|
-| **Authentic** | 70-100% | 🟢 Low | ✅ Grant IoT access |
-| **Suspicious** | 40-69% | 🟡 Medium | ⚠️ Require 2FA verification |
-| **Deepfake** | 0-39% | 🔴 High | 🎭 Activate deception mode |
+| **Authentic** | 70-100% |  Low |  Grant IoT access |
+| **Suspicious** | 40-69% |  Medium |  Require 2FA verification |
+| **Deepfake** | 0-39% |  High |  Activate deception mode |
 
-### 3️⃣ **Deception-Based Defense**
+### 3️ **Deception-Based Defense**
 
 When a deepfake is detected, the system:
 1. **Sends fake "success" response** to the attacker
@@ -93,7 +93,7 @@ When a deepfake is detected, the system:
 4. **Logs attack silently** for forensic analysis
 5. **Studies attacker behavior** to improve future detection
 
-### 4️⃣ **Real-Time Transparency**
+### 4️ **Real-Time Transparency**
 
 - Live agent logs showing decision-making process
 - Confidence score visualization
@@ -102,7 +102,7 @@ When a deepfake is detected, the system:
 
 ---
 
-## 🧠 How It Works
+##  How It Works
 
 ### Detection Algorithm
 
@@ -144,7 +144,7 @@ def make_decision(confidence):
 
 ---
 
-## 💻 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -182,7 +182,7 @@ The app will open at `http://localhost:3000`
 
 ---
 
-## 📊 Technical Details
+##  Technical Details
 
 ### Technology Stack
 
@@ -223,12 +223,12 @@ Study attacker behavior patterns in controlled honeypot environment.
 
 ## 🔬 Why This Matters
 
-### Traditional Approach ❌
+### Traditional Approach 
 ```
 Attacker → Deepfake Command → System Blocks → Attacker Knows Detection → Evolves Attack
 ```
 
-### SentinelAI Approach ✅
+### SentinelAI Approach 
 ```
 Attacker → Deepfake Command → System Deceives → Attacker Thinks Success → 
 System Learns Attack Pattern → Improves Future Detection
@@ -246,7 +246,7 @@ System Learns Attack Pattern → Improves Future Detection
 
 ---
 
-## 📈 Future Roadmap
+## Future Roadmap
 
 - [ ] Integrate real deepfake detection ML model (WaveLM, Wav2Vec2)
 - [ ] Add backend API with PostgreSQL database
@@ -259,7 +259,7 @@ System Learns Attack Pattern → Improves Future Detection
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 We welcome contributions! This project was built for a hackathon but is designed for real-world deployment.
 
@@ -273,13 +273,13 @@ We welcome contributions! This project was built for a hackathon but is designed
 
 
 
-## 👥 Team
+## Team
 
 Built with ❤️ for the [StackOverflowers] 
 
 ---
 
-## 📞 Contact
+##  Contact
 
 
 **Demo Video**: [YouTube Link]
