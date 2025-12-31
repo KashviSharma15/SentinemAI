@@ -63,13 +63,13 @@ const SentinelAI = () => {
     await new Promise(r => setTimeout(r, 500));
     
     if (action === 'allow') {
-      addLog('defense', '✓ Command authorized - IoT device accessed');
+      addLog('defense', ' Command authorized - IoT device accessed');
       addLog('defense', 'Action: Door unlocked successfully');
     } else if (action === 'restrict') {
-      addLog('defense', '⚠ Access restricted - User verification required');
+      addLog('defense', ' Access restricted - User verification required');
       addLog('defense', 'Action: 2FA authentication triggered');
     } else {
-      addLog('defense', '🎭 DECEPTION MODE ACTIVATED');
+      addLog('defense', ' DECEPTION MODE ACTIVATED');
       addLog('defense', 'Redirecting to honeypot environment...');
       await new Promise(r => setTimeout(r, 400));
       addLog('defense', '→ Fake success response sent to attacker');
@@ -272,9 +272,9 @@ const SentinelAI = () => {
 
               {agentLogs.map((log, idx) => {
                 const agentColors = {
-                  detection: { bg: 'bg-blue-500/20', border: 'border-blue-500', icon: '🔍' },
-                  decision: { bg: 'bg-purple-500/20', border: 'border-purple-500', icon: '🧠' },
-                  defense: { bg: 'bg-red-500/20', border: 'border-red-500', icon: '🛡️' }
+                  detection: { bg: 'bg-blue-500/20', border: 'border-blue-500', icon: '' },
+                  decision: { bg: 'bg-purple-500/20', border: 'border-purple-500', icon: '' },
+                  defense: { bg: 'bg-red-500/20', border: 'border-red-500', icon: '' }
                 };
                 
                 const style = agentColors[log.agent];
@@ -311,15 +311,15 @@ const SentinelAI = () => {
         {/* Info Footer */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
-            <h3 className="text-blue-300 font-semibold mb-2">🔍 Detection Agent</h3>
+            <h3 className="text-blue-300 font-semibold mb-2"> Detection Agent</h3>
             <p className="text-sm text-slate-300">Analyzes biometric patterns and audio/video fingerprints to detect deepfakes</p>
           </div>
           <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
-            <h3 className="text-purple-300 font-semibold mb-2">🧠 Decision Agent</h3>
+            <h3 className="text-purple-300 font-semibold mb-2"> Decision Agent</h3>
             <p className="text-sm text-slate-300">Evaluates threat levels and determines appropriate security response</p>
           </div>
           <div className="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
-            <h3 className="text-red-300 font-semibold mb-2">🛡️ Defense Agent</h3>
+            <h3 className="text-red-300 font-semibold mb-2"> Defense Agent</h3>
             <p className="text-sm text-slate-300">Executes autonomous defense with deception-based honeypot for attackers</p>
           </div>
         </div>
