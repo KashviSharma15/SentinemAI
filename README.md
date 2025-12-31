@@ -4,7 +4,6 @@
 
 **An autonomous AI-powered security system that detects deepfake attacks on IoT devices and defends using intelligent deception.**
 
-[Demo](#-live-demo) • [Features](#-core-features) • [How It Works](#-how-it-works) • [Quick Start](#-quick-start)
 
 </div>
 
@@ -140,43 +139,7 @@ def make_decision(confidence):
 
 ---
 
-##  Quick Start
 
-### Prerequisites
-
-```bash
-Node.js >= 16.x
-npm >= 8.x
-```
-
-### Installation
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/sentinelai-iot-security.git
-cd sentinelai-iot-security
-
-# Install dependencies
-npm install
-
-# Start development server
-npm start
-```
-
-The app will open at `http://localhost:3000`
-
-### Demo Usage
-
-1. **Upload Test Files**:
-   - `real_voice_command.mp3` → Should show AUTHENTIC
-   - `fake_deepfake_audio.mp3` → Triggers DECEPTION MODE
-   - `suspicious_audio.wav` → Shows RESTRICTED
-
-2. **Watch Agent Logs**: Observe real-time decision-making process
-
-3. **View Results**: See confidence score, threat level, and defense action
-
----
 
 ##  Technical Details
 
@@ -201,7 +164,7 @@ The app will open at `http://localhost:3000`
 
 ---
 
-## 🎓 Use Cases
+##  Use Cases
 
 ### 1. **Smart Home Security**
 Protect voice-activated locks, cameras, and thermostats from deepfake impersonation attacks.
@@ -217,7 +180,7 @@ Study attacker behavior patterns in controlled honeypot environment.
 
 ---
 
-## 🔬 Why This Matters
+##  Why This Matters
 
 ### Traditional Approach 
 ```
