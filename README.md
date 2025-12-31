@@ -1,4 +1,3 @@
-# SentinemAI
 # 🛡️ SentinelAI: Agentic Deepfake Defense for Smart Home IoT Security
 
 <div align="center">
@@ -145,8 +144,32 @@ def make_decision(confidence):
 
 ---
 
+## 💻 Quick Start
 
-###  Usage
+### Prerequisites
+
+```bash
+Node.js >= 16.x
+npm >= 8.x
+```
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/sentinelai-iot-security.git
+cd sentinelai-iot-security
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+The app will open at `http://localhost:3000`
+
+### Demo Usage
 
 1. **Upload Test Files**:
    - `real_voice_command.mp3` → Should show AUTHENTIC
@@ -236,17 +259,32 @@ System Learns Attack Pattern → Improves Future Detection
 
 ---
 
+## 🤝 Contributing
+
+We welcome contributions! This project was built for a hackathon but is designed for real-world deployment.
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+---
+
+
 
 ## 👥 Team
 
-Built with ❤️ for the [StackOverflowers]
+Built with ❤️ for the [StackOverflowers] 
 
 ---
 
 ## 📞 Contact
+
 
 **Demo Video**: [YouTube Link]
 
 **Pitch Deck**: [Slides Link]
 
 ---
+
