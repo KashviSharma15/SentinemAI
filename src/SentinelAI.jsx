@@ -68,14 +68,11 @@ function SentinelAI() {
     await new Promise(r => setTimeout(r, 500));
     
     if (action === 'allow') {
-      addLog('defense', '✓ Command authorized - IoT device accessed');
-      addLog('defense', 'Action: Door unlocked successfully');
+      addLog('defense', 'Command authorized - IoT device accessed');
     } else if (action === 'restrict') {
-      addLog('defense', '⚠ Access restricted - User verification required');
-      addLog('defense', 'Action: 2FA authentication triggered');
+      addLog('defense', 'Access restricted - 2FA required');
     } else {
-      addLog('defense', '🎭 DECEPTION MODE ACTIVATED');
-      addLog('defense', 'Redirecting to honeypot environment...');
+      addLog('defense', 'DECEPTION MODE ACTIVATED');
       await new Promise(r => setTimeout(r, 400));
       addLog('defense', 'Honeypot engaged - Attacker deceived');
       setStats(prev => ({ ...prev, blocked: prev.blocked + 1 }));
@@ -239,72 +236,120 @@ function SentinelAI() {
               {result && <button onClick={resetDemo} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">Reset Demo</button>}
             </div>
 
-          {/* Right Panel - Agent Logs */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
-            <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-              <Activity className="w-5 h-5" />
-              Multi-Agent System Logs
-            </h2>
+            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+              <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                <Activity className="w-5 h-5" /> Agent Logs
+              </h2>
+              <div className="space-y-3 max-h-[600px] overflow-y-auto">
+                {analyzing && agentLogs.length === 0 && (
+                  <div className="text-center py-8">
+                    <div className="animate-spin w-10 h-10 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-4" />
+                    <p className="text-slate-400">Analyzing...</p>
+                  </div>
+                )}
+                {agentLogs.map((log, idx) => {
+                  const colors = { detection: 'bg-blue-500/20 border-blue-500', decision: 'bg-purple-500/20 border-purple-500', defense: 'bg-red-500/20 border-red-500' };
+                  return (
+                    <div key={idx} className={'p-4 rounded-lg border-l-4 ' + colors[log.agent]}>
+                      <p className="text-xs text-slate-400 uppercase font-semibold mb-1">{log.agent}</p>
+                      <p className="text-sm text-white">{log.message}</p>
+                    </div>
+                  );
+                })}
+                {!analyzing && agentLogs.length === 0 && (
+                  <div className="text-center py-12">
+                    <Shield className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+                    <p className="text-slate-400">Run attack to begin</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
-            <div className="space-y-3 max-h-[600px] overflow-y-auto">
-              {analyzing && agentLogs.length === 0 && (
-                <div className="text-center py-8">
-                  <div className="animate-spin w-10 h-10 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-4" />
-                  <p className="text-slate-400">Initializing agents...</p>
-                </div>
-              )}
-
-              {agentLogs.map((log, idx) => {
-                const agentColors = {
-                  detection: { bg: 'bg-blue-500/20', border: 'border-blue-500', icon: '🔍' },
-                  decision: { bg: 'bg-purple-500/20', border: 'border-purple-500', icon: '🧠' },
-                  defense: { bg: 'bg-red-500/20', border: 'border-red-500', icon: '🛡️' }
-                };
-                
-                const style = agentColors[log.agent];
-                
-                return (
-                  <div 
-                    key={idx}
-                    className={`p-4 rounded-lg border-l-4 ${style.bg} ${style.border} animate-fade-in`}
-                    style={{ animationDelay: `${idx * 0.1}s` }}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">{style.icon}</span>
-                      <div className="flex-1">
-                        <p className="text-xs text-slate-400 uppercase font-semibold mb-1">
-                          {log.agent} Agent
+        {activeTab === 'dashboard' && (
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+                <p className="text-slate-400 text-sm">Devices</p>
+                <p className="text-3xl font-bold text-white">23</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+                <p className="text-slate-400 text-sm">Blocked</p>
+                <p className="text-3xl font-bold text-red-400">{stats.blocked}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+                <p className="text-slate-400 text-sm">Honeypots</p>
+                <p className="text-3xl font-bold text-yellow-400">{attackHistory.filter(h => h.action === 'deceive').length}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+                <p className="text-slate-400 text-sm">Rate</p>
+                <p className="text-3xl font-bold text-green-400">{stats.rate}%</p>
+              </div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+              <h2 className="text-xl font-semibold text-white mb-4">Attack History</h2>
+              {attackHistory.length === 0 ? (
+                <p className="text-slate-400 text-center py-8">No attacks yet</p>
+              ) : (
+                <div className="space-y-2">
+                  {attackHistory.map((attack, idx) => (
+                    <div key={idx} className="bg-slate-800/50 p-4 rounded-lg flex justify-between">
+                      <div>
+                        <p className="text-white font-semibold">{attack.fileName}</p>
+                        <p className="text-slate-400 text-sm">{attack.timestamp}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className={'font-semibold ' + (attack.classification === 'Authentic' ? 'text-green-400' : attack.classification === 'Suspicious' ? 'text-yellow-400' : 'text-red-400')}>
+                          {attack.classification}
                         </p>
-                        <p className="text-sm text-white">{log.message}</p>
+                        <p className="text-slate-400 text-sm">{attack.confidence}%</p>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-
-              {!analyzing && agentLogs.length === 0 && (
-                <div className="text-center py-12">
-                  <Shield className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-                  <p className="text-slate-400">Upload a file to begin analysis</p>
+                  ))}
                 </div>
               )}
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Info Footer */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
-            <h3 className="text-blue-300 font-semibold mb-2">🔍 Detection Agent</h3>
-            <p className="text-sm text-slate-300">Analyzes biometric patterns and audio/video fingerprints to detect deepfakes</p>
+        {activeTab === 'devices' && (
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+            <h2 className="text-xl font-semibold text-white mb-6">IoT Devices</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {iotDevices.map((device, idx) => (
+                <div key={idx} className="bg-slate-800/50 p-4 rounded-lg">
+                  <div className="flex justify-between mb-2">
+                    <h3 className="text-white font-semibold">{device.name}</h3>
+                    <span className="text-green-400 text-sm">ONLINE</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400 text-sm">Threats</span>
+                    <span className={'font-semibold ' + (device.threats > 0 ? 'text-red-400' : 'text-green-400')}>{device.threats}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
-            <h3 className="text-purple-300 font-semibold mb-2">🧠 Decision Agent</h3>
-            <p className="text-sm text-slate-300">Evaluates threat levels and determines appropriate security response</p>
-          </div>
-          <div className="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
-            <h3 className="text-red-300 font-semibold mb-2">🛡️ Defense Agent</h3>
-            <p className="text-sm text-slate-300">Executes autonomous defense with deception-based honeypot for attackers</p>
+        )}
+
+        {activeTab === 'settings' && (
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+            <h2 className="text-xl font-semibold text-white mb-6">Configuration</h2>
+            <div className="space-y-4">
+              {[
+                ['Detection Engine', 'Heuristic ML v2.1'],
+                ['Active Agents', '3 (Detection, Decision, Defense)'],
+                ['Honeypot Status', 'ACTIVE'],
+                ['Risk Threshold', '50%'],
+                ['Auto-Defense', 'ENABLED']
+              ].map(([key, value]) => (
+                <div key={key} className="bg-slate-800/50 p-4 rounded-lg">
+                  <p className="text-slate-400 text-sm">{key}</p>
+                  <p className="text-white font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
