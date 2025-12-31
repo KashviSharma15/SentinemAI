@@ -2,10 +2,6 @@
 
 <div align="center">
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18.x-61dafb.svg)
-![Status](https://img.shields.io/badge/status-hackathon--ready-success.svg)
-
 **An autonomous AI-powered security system that detects deepfake attacks on IoT devices and defends using intelligent deception.**
 
 [Demo](#-live-demo) • [Features](#-core-features) • [How It Works](#-how-it-works) • [Quick Start](#-quick-start)
