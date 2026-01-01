@@ -3,7 +3,7 @@
 <div align="center">
 
 **An autonomous AI-powered security system that detects deepfake attacks on IoT devices and defends using intelligent deception.**
-
+## <a> https://youtu.be/HlL_3FHvyd0?si=pBKmP6D9LQZRO8sq <a>
 
 </div>
 
@@ -234,16 +234,13 @@ We welcome contributions! This project was built for a hackathon but is designed
 
 ## Team
 
-Built with ❤️ for the [StackOverflowers] 
+Built with ❤️ for the StackOverflowers
 
 ---
 
 ##  Contact
 
-
-**Demo Video**: [YouTube Link]
-
-**Pitch Deck**: [Slides Link]
+**Demo Video**: [[YouTube Link]](https://youtu.be/HlL_3FHvyd0?si=pBKmP6D9LQZRO8sq)
 
 ---
 
